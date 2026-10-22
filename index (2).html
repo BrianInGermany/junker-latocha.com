@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian Junker-Latocha</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display for elegant minimalist serif, Inter for ultra clean sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        night: '#080808',
+                        panel: '#101010',
+                        spotify: '#1DB954',
+                        applemusic: '#FA243C'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth subtle transitions */
+        .subtle-border {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+        
+        /* Vignette gradient overlays */
+        .vignette-overlay {
+            background: linear-gradient(180deg, rgba(8,8,8,0) 60%, rgba(8,8,8,0.95) 100%),
+                        linear-gradient(90deg, rgba(8,8,8,0) 70%, rgba(8,8,8,1) 100%);
+        }
+        @media (max-width: 1023px) {
+            .vignette-overlay {
+                background: linear-gradient(180deg, rgba(8,8,8,0) 50%, rgba(8,8,8,1) 100%);
+            }
+        }
+
+        /* Minimal scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080808;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-night text-zinc-300 font-sans antialiased selection:bg-zinc-800 selection:text-white min-h-screen">
+
+    <!-- MAIN TWO-COLUMN RESPONSIVE LAYOUT -->
+    <main class="min-h-screen flex flex-col lg:flex-row">
+
+        <!-- LEFT COLUMN: PORTRAIT PHOTO COVER -->
+        <div class="relative w-full lg:w-1/2 h-[65vh] lg:h-screen lg:sticky lg:top-0 bg-neutral-950 overflow-hidden flex-shrink-0">
+            <!-- Portrait Image -->
+            <img id="portrait-img" 
+                 src="brian.jpg" 
+                 alt="Brian Junker-Latocha Guitarist" 
+                 class="w-full h-full object-cover object-center">
+
+            <!-- Vignette Edge Gradients -->
+            <div class="absolute inset-0 vignette-overlay pointer-events-none"></div>
+
+            <!-- PHOTO CREDIT (Bottom-Left Over Photo) -->
+            <div class="absolute bottom-6 left-6 z-10 pointer-events-none">
+                <span class="text-[10px] tracking-widest uppercase text-zinc-400/80 font-light backdrop-blur-xs px-2.5 py-1 rounded-md bg-black/30 border border-white/5">
+                    Photo Credit Katharina Marosz
+                </span>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: MINIMAL CONTENT -->
+        <div class="w-full lg:w-1/2 px-6 sm:px-12 lg:px-20 py-12 lg:py-20 flex flex-col justify-between space-y-16">
+            
+            <div class="space-y-16">
+                <!-- HEADER / BRAND -->
+                <header class="space-y-3 pt-2">
+                    <p class="text-xs uppercase tracking-[0.25em] text-zinc-500 font-medium">Singer-Songwriter</p>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-none">
+                        Brian Junker-Latocha
+                    </h1>
+                </header>
+
+                <!-- PRIMARY MUSIC CALL TO ACTIONS -->
+                <section class="space-y-3">
+                    <p class="text-xs uppercase tracking-widest text-zinc-500 font-medium">Listen On</p>
+                    <div class="flex flex-col sm:flex-row items-stretch gap-3">
+                        <!-- Spotify -->
+                        <a href="https://open.spotify.com/intl-de/artist/5YPZnEvXSYG5LAiLeYDfYK" 
+                           target="_blank" rel="noopener" 
+                           class="flex-1 flex items-center justify-between px-5 py-3.5 rounded-xl bg-panel border subtle-border hover:border-spotify/50 hover:bg-zinc-900/80 transition group">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-spotify text-xl text-spotify"></i>
+                                <span class="text-sm font-medium text-white">Spotify</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-zinc-600 group-hover:text-zinc-300 transition"></i>
+                        </a>
+
+                        <!-- Apple Music -->
+                        <a href="https://music.apple.com/at/artist/brian-junker-latocha/1753775469" 
+                           target="_blank" rel="noopener" 
+                           class="flex-1 flex items-center justify-between px-5 py-3.5 rounded-xl bg-panel border subtle-border hover:border-applemusic/50 hover:bg-zinc-900/80 transition group">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-apple text-xl text-applemusic"></i>
+                                <span class="text-sm font-medium text-white">Apple Music</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-zinc-600 group-hover:text-zinc-300 transition"></i>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- LIVE CONCERT DATES (BANDSINTOWN WIDGET V3) -->
+                <section class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xs uppercase tracking-widest text-zinc-500 font-medium">Upcoming Live Dates</p>
+                        <span class="text-[11px] text-zinc-600">via Bandsintown</span>
+                    </div>
+
+                    <!-- Bandsintown Widget Embed Container (Styled Dark) -->
+                    <div class="rounded-xl overflow-hidden bg-panel border subtle-border p-3">
+                        <a class="bit-widget-initializer"
+                           data-artist-name="id_15569458"
+                           
+                           data-background-color="rgba(16,16,16,1)"
+                           data-separator-color="rgba(255,255,255,0.08)"
+                           data-text-color="rgba(212,212,216,1)"
+                           data-font="Inter"
+                           data-auto-style="false"
+                           
+                           data-button-label-capitalization="uppercase"
+                           data-header-capitalization="uppercase"
+                           data-location-capitalization="uppercase"
+                           data-venue-capitalization="uppercase"
+                           data-local-dates-position="tab"
+                           data-display-lineup="false"
+                           data-display-start-time="false"
+                           data-social-share-icon="false"
+                           data-display-limit="all"
+                           
+                           data-date-format="MMM. D, YYYY"
+                           data-date-orientation="horizontal"
+                           data-date-border-color="rgba(255,255,255,0.1)"
+                           data-date-border-width="1px"
+                           data-date-capitalization="capitalize"
+                           data-date-border-radius="8px"
+                           
+                           data-event-ticket-cta-size="medium"
+                           data-event-ticket-text="TICKETS"
+                           data-event-ticket-icon="false"
+                           data-event-ticket-cta-text-color="rgba(255,255,255,1)"
+                           data-event-ticket-cta-bg-color="rgba(39,39,42,1)"
+                           data-event-ticket-cta-border-color="rgba(255,255,255,0.1)"
+                           data-event-ticket-cta-border-width="1px"
+                           data-event-ticket-cta-border-radius="8px"
+                           
+                           data-sold-out-button-text-color="rgba(161,161,170,1)"
+                           data-sold-out-button-background-color="rgba(24,24,27,1)"
+                           data-sold-out-button-border-color="rgba(255,255,255,0.08)"
+                           data-sold-out-button-clickable="true"
+                           
+                           data-event-rsvp-position="hidden"
+                           
+                           data-follow-section-position="hidden"
+                           data-play-my-city-position="hidden"
+                           
+                           data-language="en"
+                           data-layout-breakpoint="900"
+                           data-app-id="js_brian.junker-latocha.com"
+                           data-bit-logo-position="bottomRight"
+                           data-bit-logo-color="rgba(113,113,122,1)"></a>
+                    </div>
+                </section>
+
+                <!-- IMPRESSUM / LEGAL INFORMATION -->
+                <section id="impressum" class="space-y-4 pt-8 border-t subtle-border">
+                    <p class="text-xs uppercase tracking-widest text-zinc-500 font-medium">Impressum</p>
+                    
+                    <div class="bg-panel border subtle-border rounded-xl p-6 text-sm space-y-4 text-zinc-400">
+                        <div>
+                            <p class="font-medium text-white">Angaben gemäß § 5 TMG</p>
+                            <p class="mt-1 text-zinc-300">Brian Junker-Latocha</p>
+                            <p>Hermann-Steinhäuser-Str. 18</p>
+                            <p>63065 Offenbach</p>
+                            <p>Deutschland</p>
+                        </div>
+
+                        <div class="pt-2 border-t border-zinc-800/60 space-y-1.5">
+                            <p class="font-medium text-white">Kontakt</p>
+                            <p class="flex items-center gap-2">
+                                <span class="text-zinc-500 w-12">Telefon:</span>
+                                <a href="tel:+4917644420427" class="text-zinc-300 hover:text-white transition">017644420427</a>
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <span class="text-zinc-500 w-12">E-Mail:</span>
+                                <a href="mailto:brian@junker-latocha.com" class="text-zinc-300 hover:text-white transition">brian@junker-latocha.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="pt-8 text-xs text-zinc-600 flex items-center justify-between">
+                <span>© Brian Junker-Latocha</span>
+                <div class="flex items-center gap-4">
+                    <a href="https://open.spotify.com/intl-de/artist/5YPZnEvXSYG5LAiLeYDfYK" target="_blank" rel="noopener" class="hover:text-zinc-400 transition">Spotify</a>
+                    <a href="https://music.apple.com/at/artist/brian-junker-latocha/1753775469" target="_blank" rel="noopener" class="hover:text-zinc-400 transition">Apple Music</a>
+                    <a href="#impressum" class="hover:text-zinc-400 transition">Impressum</a>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- Bandsintown Official Widget Script -->
+    <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
+</body>
+</html>
